@@ -1,4 +1,5 @@
 import urlparse, re
+import sys
 
 class ppdecode(object):
     def __init__(self, url):
@@ -14,5 +15,15 @@ class ppdecode(object):
         return tmp
 
     def _parse(self):
-        self.recipient = self.arguments['r'][0]
-        self.site = self.arguments['c'][0]
+        if "r" in self.arguments:
+            self.recipient = self.arguments['r'][0]
+        if "c" in self.arguments:
+            self.site = self.arguments['c'][0]
+        pass
+
+if __name__ == "__main__":
+    if(len(sys.argv) != 2):
+        sys.exit('Usage: ppdecode.py "http://url"')
+    url = sys.argv[1]
+    p = ppdecode(url)
+    print p.url
