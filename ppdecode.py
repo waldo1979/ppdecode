@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import urlparse, re
 import sys
 
